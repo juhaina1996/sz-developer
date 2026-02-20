@@ -1,0 +1,70 @@
+.header {
+  background: #e2e2e2;
+}
+.tracking-wide {
+  font-size: 32px;
+  font-weight: 100;
+  margin-bottom: 28px;
+}
+.dna-main {
+  background: #e2e2e2;
+  padding-top: 362px;
+  padding-bottom: 432px;
+}
+.dna-sub {
+  font-size: 25px;
+  font-weight: 100;
+  line-height: 35px;
+  letter-spacing: 0.01px;
+  text-align: justify;
+}
+.dna-sub-container {
+  width: 77%;
+  margin: auto;
+}
+.text-green {
+  color: #00cc61;
+}
+.projects-section {
+  padding-top: 128px; /* py-32 */
+  padding-bottom: 128px;
+}
+.projects-heading {
+  margin-bottom: 96px; /* space before first card */
+  letter-spacing: 0.3em;
+}
+
+.projects-list {
+  gap: 128px; /* vertical spacing between projects */
+}
+.project-row {
+  column-gap: 80px;
+}
+.project-divider {
+  height: 1px;
+  background-color: #d1d5db; /* gray-300 */
+}
+.project-location {
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 991px) {
+  .tracking-wide {
+    font-size: 20px;
+    text-align: center;
+  }
+  .main-hero {
+    height: 40vh;
+  }
+  .tracking-wide-main {
+    padding-top: 0;
+    width: 100%;
+  }
+  .header-sub {
+    padding-bottom: 220px;
+  }
+  .project-divider {
+    display: none;
+  }
+}
