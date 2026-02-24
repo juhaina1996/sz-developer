@@ -142,7 +142,7 @@ export default function FooterDesktop() {
             <div>
               <button
                 onClick={scrollToTop}
-                className="bg-green-500 w-10 h-10 flex items-center justify-center"
+                className="bg-green-500 w-10 h-10 flex items-center justify-center cursor-pointer hover:bg-green-600 transition-colors"
               >
                 <Image
                   src="/footerArrow.svg"

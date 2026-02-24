@@ -228,3 +228,6 @@ body {
   animation: scaleOut 0.3s ease-out forwards;
   opacity: 1;
 }
+button{
+  cursor: pointer;
+}

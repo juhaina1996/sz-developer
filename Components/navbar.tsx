@@ -43,7 +43,7 @@ export default function Navbar() {
           {/* Hamburger */}
           <button
             onClick={() => setMenuOpen(true)}
-            className="flex flex-col justify-center items-center gap-1 group"
+            className="flex flex-col justify-center items-center gap-1 group cursor-pointer"
           >
             <Image src="/images/MENU.png" alt="Logo" width={42} height={49} />
           </button>
@@ -59,7 +59,7 @@ export default function Navbar() {
             className={`close-button absolute top-6 right-6 w-10 h-10 
                  bg-gray-100 rounded-lg 
                  flex items-center justify-center 
-                 text-xl text-gray-700 hover:bg-gray-200 transition-colors ${menuClosing ? 'animate-fadeOut' : 'animate-fadeIn'}`}
+                 text-xl text-gray-700 hover:bg-gray-200 transition-colors cursor-pointer ${menuClosing ? 'animate-fadeOut' : 'animate-fadeIn'}`}
             style={{ animationDelay: menuClosing ? '0ms' : '300ms' }}
           >
             ✕
