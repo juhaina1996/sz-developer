@@ -28,7 +28,10 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-  ],
+    "**/*.mts",
+    "Components/projects.jsx",
+    "Components/ProjectsDesktop.jsx",
+    "Components/ProjectsMobile.jsx"
+, "hooks/useIsMobile.js", "hooks/useIsMobile.js"  ],
   "exclude": ["node_modules"]
 }

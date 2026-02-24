@@ -2,9 +2,27 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import EnquiryModal from "./EnquiryModal";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuClosing, setMenuClosing] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleCloseMenu = () => {
+    setMenuClosing(true);
+    setTimeout(() => {
+      setMenuOpen(false);
+      setMenuClosing(false);
+    }, 600); // Match animation duration
+  };
+
+  const handleContactClick = () => {
+    handleCloseMenu(); // Close hamburger with animation
+    setTimeout(() => {
+      setModalOpen(true); // Open enquiry modal after menu closes
+    }, 600);
+  };
 
   return (
     <>
@@ -34,35 +52,68 @@ export default function Navbar() {
 
       {/* Fullscreen Menu */}
       {menuOpen && (
-        <div className="fixed inset-0 bg-white z-50 flex flex-col justify-center items-center">
+        <div className={`fixed inset-0 bg-[#f1efef] z-50 flex flex-col ${menuClosing ? 'animate-slideOutRight' : 'animate-slideInRight'}`}>
           {/* Close Button */}
           <button
-            onClick={() => setMenuOpen(false)}
-            className="absolute top-6 right-6 text-2xl"
+            onClick={handleCloseMenu}
+            className={`close-button absolute top-6 right-6 w-10 h-10 
+                 bg-gray-100 rounded-lg 
+                 flex items-center justify-center 
+                 text-xl text-gray-700 hover:bg-gray-200 transition-colors ${menuClosing ? 'animate-fadeOut' : 'animate-fadeIn'}`}
+            style={{ animationDelay: menuClosing ? '0ms' : '300ms' }}
           >
             ✕
           </button>
 
-          {/* Menu Items */}
-          <div className="flex flex-col items-center gap-8 text-3xl font-light tracking-wide">
-            <a href="#" onClick={() => setMenuOpen(false)}>
+          {/* Center Menu Links */}
+          <div className="flex-1 flex flex-col justify-center items-center gap-8">
+            {/* Active Link */}
+            <a
+              href="#"
+              onClick={handleCloseMenu}
+              className={`text-xl font-light text-[#000000] relative ${menuClosing ? 'animate-fadeOutLeft' : 'animate-fadeInLeft'}`}
+              style={{ animationDelay: menuClosing ? '0ms' : '400ms' }}
+            >
               Home
+              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-green-500" />
             </a>
 
-            <a href="#" onClick={() => setMenuOpen(false)}>
-              About
-            </a>
-
-            <a href="#" onClick={() => setMenuOpen(false)}>
+            <a
+              href="#"
+              onClick={handleCloseMenu}
+              className={`text-xl font-light text-[#000000] ${menuClosing ? 'animate-fadeOutLeft' : 'animate-fadeInLeft'}`}
+              style={{ animationDelay: menuClosing ? '0ms' : '500ms' }}
+            >
               Projects
             </a>
 
-            <a href="#" onClick={() => setMenuOpen(false)}>
+            <a
+              href="#"
+              onClick={handleContactClick}
+              className={`text-xl font-light text-[#000000] ${menuClosing ? 'animate-fadeOutLeft' : 'animate-fadeInLeft'}`}
+              style={{ animationDelay: menuClosing ? '0ms' : '600ms' }}
+            >
               Contact
             </a>
           </div>
+
+          {/* Bottom Logo Section */}
+          <div className={`pb-10 flex flex-col items-center ${menuClosing ? 'animate-fadeOut' : 'animate-fadeIn'}`} style={{ animationDelay: menuClosing ? '0ms' : '700ms' }}>
+            <Image
+              src="/hamburgerLogo.svg"
+              alt="SZ Developers"
+              width={130}
+              height={50}
+            />
+
+            <p className="text-[10px] text-[#4B4B4B] mt-4 text-center">
+              SZ Developers © 2026 <br />
+              All Rights Reserved
+            </p>
+          </div>
         </div>
       )}
+      <EnquiryModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
 }

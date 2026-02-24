@@ -11,6 +11,9 @@
   padding-top: 362px;
   padding-bottom: 432px;
 }
+.close-button{
+  cursor: pointer;
+}
 .dna-sub {
   font-size: 25px;
   font-weight: 100;
@@ -48,7 +51,64 @@
   margin-top: 4px;
   margin-bottom: 24px;
 }
+.div-one-projects,
+.div-two-projects,
+.div-three-projects {
+  justify-content: space-between;
+  align-items: center;
+}
 
+.div-one-projects {
+  font-size: 14px;
+  color: #3f3f3f;
+}
+.div-three-projects {
+  font-size: 18px;
+  color: #3f3f3f;
+}
+.div-two-projects {
+  position: relative;
+  margin-left: -5px;
+  margin-right: -5px;
+  z-index: 100;
+  width: 102%;
+}
+.horizontal-black {
+  margin-top: 3px;
+}
+.footer-main {
+  padding: 108px 85px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+.footer-logo {
+  margin-bottom: 60px;
+}
+.contact-info {
+  font-size: 13px;
+  margin-bottom: 33px;
+  color: #ffffff;
+}
+.address-info {
+  font-size: 13px;
+  color: #ffffff;
+}
+.services-heading {
+  font-size: 17px;
+  margin-bottom: 22px;
+}
+.services-sub-heading {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-size: 14px;
+}
+.logo-container {
+  margin-top: 21px;
+  display: flex;
+  gap: 23px;
+}
 @media (max-width: 991px) {
   .tracking-wide {
     font-size: 20px;
@@ -66,5 +126,22 @@
   }
   .project-divider {
     display: none;
+  }
+  .dna-sub {
+    letter-spacing: -0.99px;
+  }
+  .dna-main {
+    padding-top: 227px;
+    padding-bottom: 301px;
+    border: 1px solid #e2e2e2;
+  }
+  .our-projects {
+    margin-bottom: 33px;
+  }
+  .our-projects-main {
+    padding: 0 20px;
+  }
+  .our-projects-container {
+    padding: 0 20px;
   }
 }
