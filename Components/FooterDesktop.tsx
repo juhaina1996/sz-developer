@@ -1,13 +1,28 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+import EnquiryModal from "./EnquiryModal";
 
 export default function FooterDesktop() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+  };
+
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleContactClick = () => {
+    setModalOpen(true);
   };
 
   return (
@@ -23,7 +38,7 @@ export default function FooterDesktop() {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#000000]"></div>
+      <div className="absolute inset-0 bg-[#000000] opacity-50"></div>
 
       <div className="relative footer-main">
         <div className="grid grid-cols-1 md:grid-cols-[40%_55%] gap-12">
@@ -31,7 +46,7 @@ export default function FooterDesktop() {
           {/* LEFT HALF (UNCHANGED) */}
           <div className="space-y-4">
             <Image
-              src="/footerLogo.png"
+            src="/footerLogo.svg"
               className="footer-logo"
               alt="Logo"
               width={140}
@@ -88,8 +103,18 @@ export default function FooterDesktop() {
             <div>
               <h3 className="services-heading text-green">About</h3>
               <div className="services-sub-heading">
-                <div>Our Projects</div>
-                <div>Contact</div>
+                <button 
+                  onClick={scrollToProjects}
+                  className="text-left hover:text-[#00CC61] transition-colors cursor-pointer"
+                >
+                  Our Projects
+                </button>
+                <button 
+                  onClick={handleContactClick}
+                  className="text-left hover:text-[#00CC61] transition-colors cursor-pointer"
+                >
+                  Contact
+                </button>
                 <div className="logo-container">
                   <a 
                     href="https://www.linkedin.com/company/szdevelopers" 
@@ -147,8 +172,8 @@ export default function FooterDesktop() {
                 <Image
                   src="/footerArrow.svg"
                   alt="Scroll to top"
-                  width={16}
-                  height={16}
+                  width={46}
+                  height={46}
                   className="object-contain"
                 />
               </button>
@@ -162,6 +187,7 @@ export default function FooterDesktop() {
           Copyright SZ Developers © 2026. All rights reserved.
         </div>
       </div>
+      <EnquiryModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </footer>
   );
 }

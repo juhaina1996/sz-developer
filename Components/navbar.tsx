@@ -24,20 +24,32 @@ export default function Navbar() {
     }, 600);
   };
 
+  const handleProjectsClick = () => {
+    handleCloseMenu(); // Close hamburger with animation
+    setTimeout(() => {
+      const projectsSection = document.getElementById('projects');
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 600);
+  };
+
   return (
     <>
       {/* Navbar */}
       <nav className="header top-0 left-0 w-full z-50">
-        <div className="header-sub flex justify-between items-center px-6 md:px-12 py-5">
+        <div className="header-sub flex justify-between items-center px-6 md:px-12 py-[28px]">
           {/* Logo */}
           <div className="text-xl font-semibold tracking-wide">
-            {/* Replace with Image later */}
-            <Image
-              src="/images/headerLogo.png"
-              alt="Logo"
-              width={72}
-              height={69}
-            />
+            <a href="/" className="block">
+              <Image
+                src="/images/headerLogo.png"
+                alt="Logo"
+                width={72}
+                height={58}
+                className="h-[59px] w-[143px] logo"
+              />
+            </a>
           </div>
 
           {/* Hamburger */}
@@ -45,7 +57,8 @@ export default function Navbar() {
             onClick={() => setMenuOpen(true)}
             className="flex flex-col justify-center items-center gap-1 group cursor-pointer"
           >
-            <Image src="/images/MENU.png" alt="Logo" width={42} height={49} />
+            <Image src="/images/MENU.svg" alt="Logo" width={42} height={49}                 className="h-[49px] w-[42px] menu-icon"
+ />
           </button>
         </div>
       </nav>
@@ -57,9 +70,9 @@ export default function Navbar() {
           <button
             onClick={handleCloseMenu}
             className={`close-button absolute top-6 right-6 w-10 h-10 
-                 bg-gray-100 rounded-lg 
+                 bg-[#e0e0e0] rounded-lg 
                  flex items-center justify-center 
-                 text-xl text-gray-700 hover:bg-gray-200 transition-colors cursor-pointer ${menuClosing ? 'animate-fadeOut' : 'animate-fadeIn'}`}
+                 text-xl text-gray-700 hover:bg-gray-300  transition-colors cursor-pointer ${menuClosing ? 'animate-fadeOut' : 'animate-fadeIn'}`}
             style={{ animationDelay: menuClosing ? '0ms' : '300ms' }}
           >
             ✕
@@ -79,8 +92,8 @@ export default function Navbar() {
             </a>
 
             <a
-              href="#"
-              onClick={handleCloseMenu}
+              href="#projects"
+              onClick={handleProjectsClick}
               className={`text-xl font-light text-[#000000] ${menuClosing ? 'animate-fadeOutLeft' : 'animate-fadeInLeft'}`}
               style={{ animationDelay: menuClosing ? '0ms' : '500ms' }}
             >

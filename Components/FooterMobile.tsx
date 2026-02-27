@@ -1,8 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+import EnquiryModal from "./EnquiryModal";
 
 export default function FooterMobile() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -10,8 +14,19 @@ export default function FooterMobile() {
     });
   };
 
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById("projects");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleContactClick = () => {
+    setModalOpen(true);
+  };
+
   return (
-    <footer className="relative text-white px-6 py-14">
+    <footer className="relative text-white px-6 py-14 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
         <Image
@@ -23,93 +38,106 @@ export default function FooterMobile() {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/90" />
+      <div className="absolute inset-0 bg-black/60" />
 
       <div className="relative z-10">
-        {/* ===== GRID SECTION ===== */}
-        <div className="grid grid-cols-[1fr_1fr_auto] gap-y-12 gap-x-8">
-          {/* Services */}
-          <div>
+        {/* ===== FLEX WRAPPER ===== */}
+        <div className="flex flex-wrap gap-y-12">
+          
+          {/* ===== ROW 1 ===== */}
+          <div className="w-1/2">
             <h3 className="text-green-500 text-lg mb-5">Services</h3>
-            <div className="space-y-4 text-sm leading-6">
+            <div className="space-y-4 text-[11px] leading-6">
               <div>Real Estate Development</div>
               <div>Property Management</div>
               <div>Project Conceptualization & Planning</div>
             </div>
           </div>
 
-          {/* About */}
-          <div>
-            <h3 className="text-green-500 text-lg mb-5">About</h3>
-            <div className="space-y-4 text-sm leading-6">
-              <div>Our Projects</div>
-              <div>Contact</div>
+          <div className="w-1/2 relative">
+            <div className="flex justify-between items-start">
+              <h3 className="text-green-500 text-lg mb-5">About</h3>
+
+              {/* Scroll Button (First Row) */}
+              <button
+                onClick={scrollToTop}
+                className="bg-green-500 w-10 h-10 flex items-center justify-center hover:bg-green-600 transition-colors"
+              >
+                <Image
+                  src="/footerArrow.svg"
+                  alt="Scroll to top"
+                  width={16}
+                  height={16}
+                />
+              </button>
+            </div>
+
+            <div className="space-y-4 text-[11px] leading-6">
+              <button
+                onClick={scrollToProjects}
+                className="block text-left hover:text-[#00CC61] transition-colors"
+              >
+                Our Projects
+              </button>
+
+              <button
+                onClick={handleContactClick}
+                className="block text-left hover:text-[#00CC61] transition-colors"
+              >
+                Contact
+              </button>
+
+              {/* Social Icons */}
               <div className="flex gap-4 mt-6">
-                <a 
-                  href="https://www.linkedin.com/company/szdevelopers" 
-                  target="_blank" 
+                <a
+                  href="https://www.linkedin.com/company/szdevelopers"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block transition-all duration-300 hover:scale-110 hover:opacity-80"
+                  className="transition-all duration-300 hover:scale-110 hover:opacity-80"
                 >
                   <Image
                     src="/linkedin.svg"
                     alt="LinkedIn"
                     width={20}
                     height={20}
-                    className="object-contain"
                   />
                 </a>
-                <a 
-                  href="https://www.instagram.com/szdevelopers?igsh=MXdpaTIwYWozc2E3dw==" 
-                  target="_blank" 
+
+                <a
+                  href="https://www.instagram.com/szdevelopers"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block transition-all duration-300 hover:scale-110 hover:opacity-80"
+                  className="transition-all duration-300 hover:scale-110 hover:opacity-80"
                 >
                   <Image
                     src="/instagram.svg"
                     alt="Instagram"
                     width={20}
                     height={20}
-                    className="object-contain"
                   />
                 </a>
-                <a 
-                  href="https://www.facebook.com/szhomes" 
-                  target="_blank" 
+
+                <a
+                  href="https://www.facebook.com/szhomes"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block transition-all duration-300 hover:scale-110 hover:opacity-80"
+                  className="transition-all duration-300 hover:scale-110 hover:opacity-80"
                 >
                   <Image
                     src="/fb.svg"
                     alt="Facebook"
                     width={10}
                     height={16}
-                    className="object-contain"
                   />
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Scroll Button (same row) */}
-          <div className="flex justify-end">
-            <button
-              onClick={scrollToTop}
-              className="bg-green-500 w-10 h-10 flex items-center justify-center cursor-pointer hover:bg-green-600 transition-colors"
-            >
-              <Image
-                src="/footerArrow.svg"
-                alt="Scroll to top"
-                width={16}
-                height={16}
-              />
-            </button>
-          </div>
-
-          {/* Contact */}
-          <div>
+          {/* ===== ROW 2 ===== */}
+          <div className="w-1/2">
             <h3 className="text-green-500 text-lg mb-5">Contact</h3>
-            <div className="space-y-4 text-sm">
+            <div className="space-y-4 text-[11px]">
               <div className="flex items-center gap-3">
                 <Image
                   src="/phoneIcon.png"
@@ -132,10 +160,9 @@ export default function FooterMobile() {
             </div>
           </div>
 
-          {/* Office */}
-          <div>
+          <div className="w-1/2">
             <h3 className="text-green-500 text-lg mb-5">Office</h3>
-            <p className="text-sm leading-6">
+            <p className="text-[11px] leading-6">
               3rd Floor, Nechikkadan Tower,
               <br />
               Mini Bypass Road,
@@ -145,15 +172,12 @@ export default function FooterMobile() {
               P.O. Kozhikode, Kerala 673006
             </p>
           </div>
-
-          {/* Empty column for alignment */}
-          <div></div>
         </div>
 
         {/* Logo */}
         <div className="flex justify-center pt-16">
           <Image
-            src="/footerLogo.png"
+            src="/footerLogo.svg"
             alt="SZ Developers"
             width={150}
             height={60}
@@ -167,6 +191,8 @@ export default function FooterMobile() {
           All Rights Reserved
         </div>
       </div>
+
+      <EnquiryModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </footer>
   );
 }

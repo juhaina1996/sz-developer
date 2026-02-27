@@ -9,8 +9,18 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <DNA />
-      <Projects />
+      <div 
+        className="bg-cover bg-center bg-no-repeat"
+ style={{
+    backgroundImage: "url(/bgMain.svg)",
+    backgroundColor: "#e1e1e1", 
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}      >
+        <DNA />
+        <Projects />
+      </div>
       <Footer />
     </main>
   );

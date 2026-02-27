@@ -53,6 +53,47 @@ export default function EnquiryModal({ open, onClose }: Props) {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    
+    // Name validation: no numbers allowed
+    if (name === 'name') {
+      const nameValue = value.replace(/[0-9]/g, '');
+      setFormData(prev => ({
+        ...prev,
+        [name]: nameValue
+      }));
+      return;
+    }
+    
+    // Phone validation: only numbers after +91
+    if (name === 'phone') {
+      // Keep +91 prefix and only allow numbers after it
+      if (!value.startsWith('+91')) {
+        setFormData(prev => ({
+          ...prev,
+          [name]: '+91'
+        }));
+        return;
+      }
+      const phoneDigits = value.slice(3).replace(/\D/g, '');
+      // Limit to 10 digits after +91
+      const limitedPhone = '+91' + phoneDigits.slice(0, 10);
+      setFormData(prev => ({
+        ...prev,
+        [name]: limitedPhone
+      }));
+      return;
+    }
+    
+    // Message validation: max 500 characters
+    if (name === 'message') {
+      const limitedMessage = value.slice(0, 500);
+      setFormData(prev => ({
+        ...prev,
+        [name]: limitedMessage
+      }));
+      return;
+    }
+    
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -62,9 +103,22 @@ export default function EnquiryModal({ open, onClose }: Props) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Basic validation
+    // Validation
     if (!formData.name.trim() || !formData.phone.trim() || !formData.email.trim()) {
       alert('Please fill in all required fields');
+      return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    
+    // Phone validation: must have exactly 10 digits after +91
+    if (formData.phone.length !== 13) {
+      alert('Please enter a valid 10-digit phone number');
       return;
     }
 
@@ -90,11 +144,6 @@ export default function EnquiryModal({ open, onClose }: Props) {
       // Note: With no-cors mode, we can't read the response
       // We assume success if no error is thrown
       setSubmitStatus('success');
-      
-      // Close modal after 2 seconds
-      setTimeout(() => {
-        handleClose();
-      }, 2000);
 
     } catch (error) {
       console.error('Form submission error:', error);
@@ -121,39 +170,51 @@ export default function EnquiryModal({ open, onClose }: Props) {
         onClick={(e) => e.stopPropagation()}
       >
        
-        <button
-          type="button"
-          onClick={handleClose}
-          className="absolute top-4 right-4 w-9 h-9 bg-gray-200 rounded-lg flex items-center justify-center text-lg text-gray-600 hover:bg-gray-300 transition-colors cursor-pointer z-10"
-          style={{ pointerEvents: 'auto' }}
-        >
-          ✕
-        </button>
-
-        {/* Heading */}
-        <h2 className={`text-2xl font-medium text-center text-[#413529] ${isClosing ? '' : 'animate-fadeInUp'}`} style={{ animationDelay: isClosing ? '0ms' : '200ms' }}>
-          Send Us a Message
-        </h2>
-
-        <p className={`text-center text-[12px] text-[#413529] mt-1 mb-[19px] ${isClosing ? '' : 'animate-fadeInUp'}`} style={{ animationDelay: isClosing ? '0ms' : '300ms' }}>
-          Enter your details and we will get back to you.
-        </p>
-
-        {/* Success Message */}
-        {submitStatus === 'success' && (
-          <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded-md text-sm text-center animate-fadeInUp">
-            ✓ Thank you! Your message has been sent successfully.
-          </div>
+        {submitStatus !== 'success' && (
+          <button
+            type="button"
+            onClick={handleClose}
+            className="absolute top-4 right-4 w-9 h-9 bg-gray-200 rounded-lg flex items-center justify-center text-lg text-gray-600 hover:bg-gray-300 transition-colors cursor-pointer z-10"
+            style={{ pointerEvents: 'auto' }}
+          >
+            ✕
+          </button>
         )}
 
-        {/* Error Message */}
-        {submitStatus === 'error' && (
-          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-md text-sm text-center animate-fadeInUp">
-            ✗ Something went wrong. Please try again or contact us directly.
+        {/* Success Screen */}
+        {submitStatus === 'success' ? (
+          <div className="flex flex-col items-center justify-center py-8 animate-fadeInUp">
+            <div className="text-6xl mb-4">✓</div>
+            <p className="text-center text-lg text-[#413529] mb-6">
+              Thank you! Your message has been sent successfully.
+            </p>
+            <button
+              type="button"
+              onClick={handleClose}
+              className="w-full bg-[#00CC61] text-white py-3 rounded-md text-base font-medium hover:bg-[#00b355] transition cursor-pointer"
+            >
+              Close
+            </button>
           </div>
-        )}
+        ) : (
+          <>
+            {/* Heading */}
+            <h2 className={`text-2xl font-medium text-center text-[#413529] ${isClosing ? '' : 'animate-fadeInUp'}`} style={{ animationDelay: isClosing ? '0ms' : '200ms' }}>
+              Send Us a Message
+            </h2>
 
-        <form className="space-y-3" onSubmit={handleSubmit}>
+            <p className={`text-center text-[12px] text-[#413529] mt-1 mb-[19px] ${isClosing ? '' : 'animate-fadeInUp'}`} style={{ animationDelay: isClosing ? '0ms' : '300ms' }}>
+              Enter your details and we will get back to you.
+            </p>
+
+            {/* Error Message */}
+            {submitStatus === 'error' && (
+              <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-md text-sm text-center animate-fadeInUp">
+                ✗ Something went wrong. Please try again or contact us directly.
+              </div>
+            )}
+
+            <form className="space-y-3" onSubmit={handleSubmit}>
           {/* Name */}
           <div className={`bg-gray-200 rounded-md px-4 py-3 ${isClosing ? '' : 'animate-fadeInUp'}`} style={{ animationDelay: isClosing ? '0ms' : '350ms' }}>
             <label className="block text-xs text-gray-600 mb-1">Name *</label>
@@ -201,7 +262,7 @@ export default function EnquiryModal({ open, onClose }: Props) {
           {/* Message */}
           <div className={`bg-gray-200 rounded-md px-4 py-3 ${isClosing ? '' : 'animate-fadeInUp'}`} style={{ animationDelay: isClosing ? '0ms' : '500ms' }}>
             <label className="block text-xs text-gray-600 mb-2">
-              Your message:
+              Your message: ({formData.message.length}/500)
             </label>
             <textarea
               name="message"
@@ -216,13 +277,15 @@ export default function EnquiryModal({ open, onClose }: Props) {
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={isSubmitting || submitStatus === 'success'}
-            className={`w-full bg-green-500 text-white py-3 rounded-md text-base font-medium hover:bg-green-600 transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer ${isClosing ? '' : 'animate-fadeInUp'}`}
+            disabled={isSubmitting}
+            className={`w-full bg-[#00CC61] text-white py-3 rounded-md text-base font-medium hover:bg-[#00b355] transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer ${isClosing ? '' : 'animate-fadeInUp'}`}
             style={{ animationDelay: isClosing ? '0ms' : '550ms' }}
           >
-            {isSubmitting ? 'Sending...' : submitStatus === 'success' ? 'Sent!' : 'Submit'}
+            {isSubmitting ? 'Sending...' : 'Submit'}
           </button>
         </form>
+          </>
+        )}
       </div>
     </div>
   );

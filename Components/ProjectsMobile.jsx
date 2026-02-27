@@ -14,8 +14,8 @@ const projects = [
     image: "/project1.jpg",
     status: "Completed",
     url: "https://www.instagram.com/damview_banasura?igsh=MXdhM2ttbTR2Y3FzdQ==",
-    imgHeight: "h-[690px]",
-    imgWidth: "w-[50vw]",
+    imgHeight: "h-[50vh]",
+    imgWidth: "w-[55vw]",
     badgePosition: "top-[35px] left-[27px]",
   },
   {
@@ -25,7 +25,7 @@ const projects = [
     image: "/project2.jpg",
     status: "Ongoing",
     url: "http://www.rituresort.com/",
-    imgHeight: "h-[438px]",
+    imgHeight: "h-[30vh]",
     imgWidth: "w-[100vw]",
     badgePosition: "top-[35px] left-[20px]",
   },
@@ -36,7 +36,7 @@ const projects = [
     image: "/project3.jpg",
     status: "Launching Soon",
     url: "#",
-    imgHeight: "h-[390px]",
+    imgHeight: "h-[30vh]",
     imgWidth: "w-[100vw]",
     badgePosition: "top-[35px] right-[40px]",
   },
@@ -196,7 +196,7 @@ export default function ProjectsMobile() {
                 <div className="relative">
                   {/* Vertical Line */}
                   <div 
-                    className="absolute left-[36px] top-0 w-[1px] h-[40px] bg-black"
+                    className="absolute left-[36px] top-[-2px] w-[1px] h-[36px] bg-black"
                     data-aos="fade-down"
                     data-aos-delay="200"
                     data-aos-duration="1200"
@@ -227,7 +227,7 @@ export default function ProjectsMobile() {
                   </div>
 
                   {/* ===== HORIZONTAL LINE (STARTS AFTER VERTICAL) ===== */}
-                  <div className="relative mt-2 ml-[42.5px]">
+                  <div className="relative ml-[42.5px] mt-[3px]">
                     {/* Green block */}
                     <div 
                       className="absolute top-[-40px] left-[-12px] w-[14px] h-[4px] bg-[#00CC61]"
@@ -249,7 +249,7 @@ export default function ProjectsMobile() {
 
                   {/* ===== BOTTOM ROW (Icon + Location) ===== */}
                   <div 
-                    className="flex items-center mt-2 ml-[54px]"
+                    className="flex items-center mt-[3px] ml-[54px]"
                     data-aos="fade-up"
                     data-aos-delay="800"
                     data-aos-duration="1000"

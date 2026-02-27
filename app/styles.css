@@ -1,13 +1,16 @@
 .header {
   background: #e2e2e2;
 }
+main{
+    background: #e2e2e2;
+
+}
 .tracking-wide {
   font-size: 32px;
   font-weight: 100;
-  margin-bottom: 28px;
+  /* margin-bottom: 28px; */
 }
 .dna-main {
-  background: #e2e2e2;
   padding-top: 362px;
   padding-bottom: 432px;
 }
@@ -111,7 +114,8 @@
 }
 @media (max-width: 991px) {
   .tracking-wide {
-    font-size: 20px;
+    font-size: 14px;
+    font-weight: 300;
     text-align: center;
   }
   .main-hero {
@@ -122,7 +126,7 @@
     width: 100%;
   }
   .header-sub {
-    padding-bottom: 220px;
+    margin-bottom: 30vh;
   }
   .project-divider {
     display: none;
@@ -131,9 +135,8 @@
     letter-spacing: -0.99px;
   }
   .dna-main {
-    padding-top: 227px;
+    padding-top: 247px;
     padding-bottom: 301px;
-    border: 1px solid #e2e2e2;
   }
   .our-projects {
     margin-bottom: 33px;
@@ -143,5 +146,17 @@
   }
   .our-projects-container {
     padding: 0 20px;
+  }
+  .our-projects{
+    font-size: 18px;
+  }
+  .menu-icon{
+    width:22px;
+    height:22px
+  }
+  .logo{
+    width:48px;
+        height:20px
+
   }
 }

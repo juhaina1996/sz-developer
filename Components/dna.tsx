@@ -14,7 +14,7 @@ export default function DNA() {
   }, []);
 
   return (
-    <section className="dna-main w-full py-32 md:py-40">
+    <section className="dna-main w-full py-32 md:py-40 bg-transparent">
       <div className="dna-sub-container text-center">
         {/* Heading */}
         <h2 

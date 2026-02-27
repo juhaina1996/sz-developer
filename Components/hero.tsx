@@ -16,9 +16,13 @@ export default function Hero() {
       <div className="absolute inset-0 flex items-start">
         <div className="tracking-wide-main pt-32 md:pt-40 px-6 md:px-12">
           <h1 className="tracking-wide">
-            <span className="text-[#00CC61]">EXCEEDING</span>
+            <span className="text-[#00CC61] inline-block animate-fadeInUp" style={{ animationDelay: '300ms' }}>
+              EXCEEDING
+            </span>
 
-            <span className="text-black ml-2">POSSIBILITIES</span>
+            <span className="text-black ml-2 inline-block animate-fadeInUp" style={{ animationDelay: '600ms' }}>
+              POSSIBILITIES
+            </span>
           </h1>
         </div>
       </div>
