@@ -88,7 +88,34 @@ export default function FooterMobile() {
               </button>
 
               {/* Social Icons */}
-              <div className="flex gap-4 mt-6">
+            
+            </div>
+          </div>
+
+          {/* ===== ROW 2 ===== */}
+          <div className="w-1/2">
+            <h3 className="text-green-500 text-lg mb-5">Contact</h3>
+            <div className="space-y-4 text-[11px]">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/phoneIcon.png"
+                  alt="Phone"
+                  width={16}
+                  height={16}
+                />
+                <span>+91 86060 02281</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/emailIcon.png"
+                  alt="Email"
+                  width={16}
+                  height={16}
+                />
+                <span>info@szdevelopers.com</span>
+              </div>
+                <div className="flex gap-4 mt-6">
                 <a
                   href="https://www.linkedin.com/company/szdevelopers"
                   target="_blank"
@@ -130,32 +157,6 @@ export default function FooterMobile() {
                     height={16}
                   />
                 </a>
-              </div>
-            </div>
-          </div>
-
-          {/* ===== ROW 2 ===== */}
-          <div className="w-1/2">
-            <h3 className="text-green-500 text-lg mb-5">Contact</h3>
-            <div className="space-y-4 text-[11px]">
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/phoneIcon.png"
-                  alt="Phone"
-                  width={16}
-                  height={16}
-                />
-                <span>+91 86060 02281</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/emailIcon.png"
-                  alt="Email"
-                  width={16}
-                  height={16}
-                />
-                <span>info@szdevelopers.com</span>
               </div>
             </div>
           </div>

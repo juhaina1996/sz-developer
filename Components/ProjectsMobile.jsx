@@ -77,7 +77,7 @@ export default function ProjectsMobile() {
                       className="relative z-10 border border-[rgba(0,0,0,0.04)] h-full block cursor-pointer overflow-hidden"
                     >
                       <span
-                        className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[10px] ${project.badgePosition}`}
+                        className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[4px] ${project.badgePosition}`}
                       >
                         {project.status}
                       </span>
@@ -106,20 +106,14 @@ export default function ProjectsMobile() {
                       {project.location}
                     </p>
 
-                    <div className="flex items-center">
+                    <div className="flex items-center h-[6px]">
                       <div 
-                        className="w-[6px] h-[14px] bg-[#00CC61]"
-                        data-aos="fade-right"
-                        data-aos-delay="200"
-                        data-aos-duration="1200"
-                        data-aos-easing="ease-in-out"
+                        className="w-[6px] h-[14px] bg-[#00CC61] ml-[-5px] z-100"
+                       
                       />
                       <div 
                         className="flex-1 h-[1px] bg-black"
-                        data-aos="fade-left"
-                        data-aos-delay="500"
-                        data-aos-duration="1500"
-                        data-aos-easing="ease-in-out"
+                       
                       />
                     </div>
                     <a
@@ -164,9 +158,7 @@ export default function ProjectsMobile() {
                 {/* ================= IMAGE ================= */}
                 <div 
                   className="relative w-full group"
-                  data-aos="fade-right"
-                  data-aos-delay="0"
-                  data-aos-duration="1200"
+                 
                 >
                   {/* <div className="absolute inset-0 translate-x-[-7px] translate-y-[7px] bg-[#c0c0c0] transition-all duration-300 group-hover:translate-x-[-10px] group-hover:translate-y-[10px]" /> */}
 
@@ -196,7 +188,7 @@ export default function ProjectsMobile() {
                 <div className="relative">
                   {/* Vertical Line */}
                   <div 
-                    className="absolute left-[36px] top-[-2px] w-[1px] h-[36px] bg-black"
+                    className="absolute left-[36px] top-[-2px] w-[1px] h-[29px] bg-black"
                     data-aos="fade-down"
                     data-aos-delay="200"
                     data-aos-duration="1200"
@@ -210,7 +202,7 @@ export default function ProjectsMobile() {
                     data-aos-delay="600"
                     data-aos-duration="1000"
                   >
-                    <div className="w-[70px] mt-3  text-[13px] text-[#6E6E6E]">
+                    <div className="w-[70px]  text-[13px] text-[#6E6E6E] h-[13px]">
                       {project.year}
                     </div>
 
@@ -230,11 +222,8 @@ export default function ProjectsMobile() {
                   <div className="relative ml-[42.5px] mt-[3px]">
                     {/* Green block */}
                     <div 
-                      className="absolute top-[-40px] left-[-12px] w-[14px] h-[4px] bg-[#00CC61]"
-                      data-aos="fade-right"
-                      data-aos-delay="300"
-                      data-aos-duration="1200"
-                      data-aos-easing="ease-in-out"
+                      className="absolute top-[-31px] left-[-12px] w-[14px] h-[4px] bg-[#00CC61] z-100"
+                      
                     />
 
                     {/* Horizontal line */}
@@ -249,7 +238,7 @@ export default function ProjectsMobile() {
 
                   {/* ===== BOTTOM ROW (Icon + Location) ===== */}
                   <div 
-                    className="flex items-center mt-[3px] ml-[54px]"
+                    className="flex mt-[3px] ml-[54px]"
                     data-aos="fade-up"
                     data-aos-delay="800"
                     data-aos-duration="1000"

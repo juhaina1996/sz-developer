@@ -183,9 +183,8 @@ export default function EnquiryModal({ open, onClose }: Props) {
 
         {/* Success Screen */}
         {submitStatus === 'success' ? (
-          <div className="flex flex-col items-center justify-center py-8 animate-fadeInUp">
-            <div className="text-6xl mb-4">✓</div>
-            <p className="text-center text-lg text-[#413529] mb-6">
+          <div className="flex flex-col items-center justify-center py-0 animate-fadeInUp">
+            <p className="text-center text-lg text-[#413529] mb-4">
               Thank you! Your message has been sent successfully.
             </p>
             <button

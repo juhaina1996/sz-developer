@@ -37,7 +37,7 @@ const projects = [
     year: "2028",
     image: "/project3.jpg",
     status: "Launching Soon",
-    url: "#",
+    url: "",
     imgHeight: "h-[97vh]",
     imgWidth: "w-[65vw]",
     badgePosition: "top-[35px] right-[40px]",
@@ -85,49 +85,72 @@ export default function Projects() {
                   >
                     {/* <div className="absolute inset-0 translate-x-[-7px] translate-y-[7px] bg-[#c0c0c0] shadow-[0_40px_70px_-35px_rgba(0,0,0,0.22)] transition-all duration-300 group-hover:translate-x-[-10px] group-hover:translate-y-[10px]" /> */}
 
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative z-10 border border-[rgba(0,0,0,0.04)] block cursor-pointer overflow-hidden"
-                    >
-                      <span
-                        className={`absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[10px] ${project.badgePosition}`}
+                    {project.url ? (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative z-10 border border-[rgba(0,0,0,0.04)] block cursor-pointer overflow-hidden"
                       >
-                        {project.status}
-                      </span>
+                        <span
+                          className={`absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[4px] ${project.badgePosition}`}
+                        >
+                          {project.status}
+                        </span>
 
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={0}
-                        height={0}
-                        sizes="100vw"
-                        className={`w-full ${project.imgHeight} object-cover transition-transform duration-500 group-hover:scale-105`}
-                      />
-                    </a>
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={0}
+                          height={0}
+                          sizes="100vw"
+                          className={`w-full ${project.imgHeight} object-cover transition-transform duration-500 group-hover:scale-105`}
+                        />
+                      </a>
+                    ) : (
+                      <div className="relative z-10 border border-[rgba(0,0,0,0.04)] overflow-hidden">
+                        <span
+                          className={`absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[4px] ${project.badgePosition}`}
+                        >
+                          {project.status}
+                        </span>
+
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={0}
+                          height={0}
+                          sizes="100vw"
+                          className={`w-full ${project.imgHeight} object-cover transition-transform duration-500 group-hover:scale-105`}
+                        />
+                      </div>
+                    )}
                   </div>
                   {/* TEXT SIDE */}
                   <div className="flex-1 w-full pt-4">
                     {/* TITLE ROW */}
                     <div
-                      className={`flex div-one-projects gap-4 ${
-                        reverse ? "flex-row-reverse text-right" : ""
+                      className={`flex div-one-projects justify-between ${
+                        reverse ? "text-right" : ""
                       }`}
                       data-aos="fade-up"
                       data-aos-delay="0"
                       data-aos-duration="1000"
                     >
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="ml-[40px] cursor-pointer hover:opacity-70 transition-opacity duration-200"
-                      >
-                        <h3>{project.title}</h3>
-                      </a>
+                      {project.url ? (
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="ml-[40px] cursor-pointer hover:opacity-70 transition-opacity duration-200"
+                        >
+                          <h3>{project.title}</h3>
+                        </a>
+                      ) : (
+                        <h3 className="">{project.title}</h3>
+                      )}
 
-                      <span>{project.year}</span>
+                      <span className={`${reverse ? "mr-[10px]" : ""}`}>{project.year}</span>
                     </div>
 
                     {/* GREEN BAR + DIVIDER */}
@@ -160,16 +183,19 @@ export default function Projects() {
                       data-aos-delay="300"
                       data-aos-duration="1000"
                     >
-                      <p className="ml-[40px]">{project.location}</p>
-
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-gray-500 hover:opacity-70 transition-opacity duration-200"
-                      >
-                        <ExternalLink size={23} strokeWidth={1.2} />
-                      </a>
+<p className={`${reverse ? "mr-auto" : "ml-[40px]"}`}>
+  {project.location}
+</p>
+                      {project.url && (
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-gray-500 hover:opacity-70 transition-opacity duration-200"
+                        >
+                          <ExternalLink size={23} strokeWidth={1.2} />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
