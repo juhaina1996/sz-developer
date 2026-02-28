@@ -24,10 +24,10 @@ const projects = [
     title: "Ritu - A Luxury Farm Resort",
     location: "Vaduvanchal, Wayanad",
     year: "2028",
-    image: "/project2.jpg",
+    image: "/project 2.png",
     status: "Ongoing",
     url: "http://www.rituresort.com/",
-    imgHeight: "h-[97vh]",
+    imgHeight: "h-[83vh]",
     imgWidth: "w-[65vw]",
     badgePosition: "top-[35px] left-[20px]",
   },
@@ -35,10 +35,10 @@ const projects = [
     title: "Seraya - Villa Commune",
     location: "Pantheerankavu, Calicut",
     year: "2028",
-    image: "/project3.jpg",
+    image: "/project 3.png",
     status: "Launching Soon",
     url: "",
-    imgHeight: "h-[97vh]",
+    imgHeight: "h-[74vh]",
     imgWidth: "w-[65vw]",
     badgePosition: "top-[35px] right-[40px]",
   },
@@ -81,7 +81,7 @@ export default function Projects() {
                 >
                   {/* IMAGE SIDE */}
                   <div 
-                    className={`relative ${project.imgWidth} group`}
+                    className={`relative group`}
                   >
                     {/* <div className="absolute inset-0 translate-x-[-7px] translate-y-[7px] bg-[#c0c0c0] shadow-[0_40px_70px_-35px_rgba(0,0,0,0.22)] transition-all duration-300 group-hover:translate-x-[-10px] group-hover:translate-y-[10px]" /> */}
 
@@ -104,7 +104,7 @@ export default function Projects() {
                           width={0}
                           height={0}
                           sizes="100vw"
-                          className={`w-full ${project.imgHeight} object-cover transition-transform duration-500 group-hover:scale-105`}
+                          className={`w-full ${project.imgHeight} object-contain transition-transform duration-500 group-hover:scale-105`}
                         />
                       </a>
                     ) : (
@@ -121,7 +121,7 @@ export default function Projects() {
                           width={0}
                           height={0}
                           sizes="100vw"
-                          className={`w-full ${project.imgHeight} object-cover transition-transform duration-500 group-hover:scale-105`}
+                          className={`w-full ${project.imgHeight} object-contain transition-transform duration-500 group-hover:scale-105`}
                         />
                       </div>
                     )}

@@ -22,7 +22,7 @@ const projects = [
     title: "Ritu - A Luxury Farm Resort",
     location: "Vaduvanchal, Wayanad",
     year: "2028",
-    image: "/project2.jpg",
+    image: "/project 2.png",
     status: "Ongoing",
     url: "http://www.rituresort.com/",
     imgHeight: "h-[30vh]",
@@ -33,9 +33,9 @@ const projects = [
     title: "Seraya - Villa Commune",
     location: "Pantheerankavu, Calicut",
     year: "2028",
-    image: "/project3.jpg",
+    image: "/project 3.png",
     status: "Launching Soon",
-    url: "#",
+    url: "",
     imgHeight: "h-[30vh]",
     imgWidth: "w-[100vw]",
     badgePosition: "top-[15px] right-[20px]",
@@ -70,26 +70,44 @@ export default function ProjectsMobile() {
                   <div className="relative h-full">
                     {/* <div className="absolute inset-0 translate-x-[-7px] translate-y-[7px] bg-[#c0c0c0] transition-all duration-300 group-hover:translate-x-[-10px] group-hover:translate-y-[10px]" /> */}
 
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative z-10 border border-[rgba(0,0,0,0.04)] h-full block cursor-pointer overflow-hidden"
-                    >
-                      <span
-                        className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[4px] ${project.badgePosition}`}
+                    {project.url ? (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative z-10 border border-[rgba(0,0,0,0.04)] h-full block cursor-pointer overflow-hidden"
                       >
-                        {project.status}
-                      </span>
+                        <span
+                          className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[4px] ${project.badgePosition}`}
+                        >
+                          {project.status}
+                        </span>
 
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={900}
-                        height={1000}
-                        className={`w-full ${project.imgHeight} object-cover transition-transform duration-500 group-hover:scale-105`}
-                      />
-                    </a>
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={900}
+                          height={1000}
+                          className={`w-full ${project.imgHeight} object-cover transition-transform duration-500 group-hover:scale-105`}
+                        />
+                      </a>
+                    ) : (
+                      <div className="relative z-10 border border-[rgba(0,0,0,0.04)] h-full overflow-hidden">
+                        <span
+                          className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[4px] ${project.badgePosition}`}
+                        >
+                          {project.status}
+                        </span>
+
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={900}
+                          height={1000}
+                          className={`w-full ${project.imgHeight} object-cover transition-transform duration-500 group-hover:scale-105`}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -116,17 +134,28 @@ export default function ProjectsMobile() {
                        
                       />
                     </div>
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[10px] text-right text-[#3F3F3F] cursor-pointer block hover:opacity-70 transition-opacity duration-200"
-                      data-aos="fade-up"
-                      data-aos-delay="800"
-                      data-aos-duration="1000"
-                    >
-                      <h3>{project.title}</h3>
-                    </a>
+                    {project.url ? (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[10px] text-right text-[#3F3F3F] cursor-pointer block hover:opacity-70 transition-opacity duration-200"
+                        data-aos="fade-up"
+                        data-aos-delay="800"
+                        data-aos-duration="1000"
+                      >
+                        <h3>{project.title}</h3>
+                      </a>
+                    ) : (
+                      <h3 
+                        className="text-[10px] text-right text-[#3F3F3F]"
+                        data-aos="fade-up"
+                        data-aos-delay="800"
+                        data-aos-duration="1000"
+                      >
+                        {project.title}
+                      </h3>
+                    )}
                   </div>
 
                   {/* 🔥 BOTTOM RIGHT YEAR */}
@@ -140,14 +169,16 @@ export default function ProjectsMobile() {
                       {project.year}
                     </span>
 
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-gray-500 hover:opacity-70 transition-opacity duration-200"
-                    >
-                      <ExternalLink size={18} strokeWidth={1.2} />
-                    </a>
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-gray-500 hover:opacity-70 transition-opacity duration-200"
+                      >
+                        <ExternalLink size={18} strokeWidth={1.2} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -162,38 +193,58 @@ export default function ProjectsMobile() {
                 >
                   {/* <div className="absolute inset-0 translate-x-[-7px] translate-y-[7px] bg-[#c0c0c0] transition-all duration-300 group-hover:translate-x-[-10px] group-hover:translate-y-[10px]" /> */}
 
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative z-10 border border-[rgba(0,0,0,0.04)] block cursor-pointer overflow-hidden"
-                  >
-                    <span
-                      className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[10px] ${project.badgePosition}`}
+                  {project.url ? (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative z-10 border border-[rgba(0,0,0,0.04)] block cursor-pointer overflow-hidden"
                     >
-                      {project.status}
-                    </span>
+                      <span
+                        className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[10px] ${project.badgePosition}`}
+                      >
+                        {project.status}
+                      </span>
 
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={900}
-                      height={1000}
-                      className={`w-full ${project.imgHeight} object-cover transition-transform duration-500 group-hover:scale-105`}
-                    />
-                  </a>
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={900}
+                        height={1000}
+                        className={`w-full ${project.imgHeight} object-cover transition-transform duration-500 group-hover:scale-105`}
+                      />
+                    </a>
+                  ) : (
+                    <div className="relative z-10 border border-[rgba(0,0,0,0.04)] overflow-hidden">
+                      <span
+                        className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[10px] ${project.badgePosition}`}
+                      >
+                        {project.status}
+                      </span>
+
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={900}
+                        height={1000}
+                        className={`w-full ${project.imgHeight} object-cover transition-transform duration-500 group-hover:scale-105`}
+                      />
+                    </div>
+                  )}
                 </div>
 
                 {/* ================= DIVIDER + CONTENT ================= */}
                 <div className="relative">
                   {/* Vertical Line */}
-                  <div 
-                    className="absolute left-[36px] top-[-2px] w-[1px] h-[29px] bg-black"
-                    data-aos="fade-down"
-                    data-aos-delay="200"
-                    data-aos-duration="1200"
-                    data-aos-easing="ease-in-out"
-                  />
+                  <div
+  className={`absolute left-[36px] top-[-2px] w-[1px] bg-black ${
+    project.url ? "h-[29px]" : "h-[24px]"
+  }`}
+  data-aos="fade-down"
+  data-aos-delay="200"
+  data-aos-duration="1200"
+  data-aos-easing="ease-in-out"
+/>
 
                   {/* ===== TOP ROW (Year + Title) ===== */}
                   <div 
@@ -202,29 +253,38 @@ export default function ProjectsMobile() {
                     data-aos-delay="600"
                     data-aos-duration="1000"
                   >
-                    <div className="w-[70px]  text-[13px] text-[#6E6E6E] h-[13px]">
+                   <div
+  className={`w-[70px] text-[13px] text-[#6E6E6E]  ${
+    project.url  ? "h-[13px]" : "h-[18px]"
+  }`}
+>
                       {project.year}
                     </div>
 
                     <div className="flex-1 text-right">
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[10px] text-[#6E6E6E] cursor-pointer inline-block hover:opacity-70 transition-opacity duration-200"
-                      >
-                        <h3>{project.title}</h3>
-                      </a>
+                      {project.url ? (
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[10px] text-[#6E6E6E] cursor-pointer inline-block hover:opacity-70 transition-opacity duration-200"
+                        >
+                          <h3>{project.title}</h3>
+                        </a>
+                      ) : (
+                        <h3 className="text-[10px] text-[#6E6E6E]">{project.title}</h3>
+                      )}
                     </div>
                   </div>
 
                   {/* ===== HORIZONTAL LINE (STARTS AFTER VERTICAL) ===== */}
                   <div className="relative ml-[42.5px] mt-[3px]">
                     {/* Green block */}
-                    <div 
-                      className="absolute top-[-31px] left-[-12px] w-[14px] h-[4px] bg-[#00CC61] z-100"
-                      
-                    />
+                   <div
+  className={`absolute left-[-12px] w-[14px] h-[4px] bg-[#00CC61] z-[100] ${
+    project.url ? "top-[-31px]" : "top-[-26px]"
+  }`}
+/>
 
                     {/* Horizontal line */}
                     <div 
@@ -244,14 +304,15 @@ export default function ProjectsMobile() {
                     data-aos-duration="1000"
                   >
                     <div className="w-[70px]">
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-gray-500 hover:opacity-70 transition-opacity duration-200"
-                      >
-                        <ExternalLink size={18} strokeWidth={1.2} />
-                      </a>
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-gray-500 hover:opacity-70 transition-opacity duration-200"
+                        >
+                          {project.url  &&<ExternalLink size={18} strokeWidth={1.2} />}
+                        </a>
+                     
                     </div>
 
                     <div className="flex-1 text-right">
