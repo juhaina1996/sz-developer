@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 export default function Hero() {
+
   return (
     <section className="relative w-full h-screen main-hero">
       {/* Background Image */}
@@ -9,7 +10,7 @@ export default function Hero() {
         alt="Hero Background"
         fill
         priority
-        className="object-cover"
+        className="object-cover hero-image"
       />
 
       {/* Overlay Content */}
@@ -26,6 +27,14 @@ export default function Hero() {
           </h1>
         </div>
       </div>
+       <Image
+        src="/images/Hero image.jpg"
+        alt="Hero Background"
+        fill
+        priority
+        className="object-contain hero-image-mob"
+      />
+
     </section>
   );
 }

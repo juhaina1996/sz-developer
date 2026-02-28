@@ -16,7 +16,7 @@ const projects = [
     url: "https://www.instagram.com/damview_banasura?igsh=MXdhM2ttbTR2Y3FzdQ==",
     imgHeight: "h-[50vh]",
     imgWidth: "w-[55vw]",
-    badgePosition: "top-[35px] left-[27px]",
+    badgePosition: "top-[15px] left-[17px]",
   },
   {
     title: "Ritu - A Luxury Farm Resort",
@@ -27,7 +27,7 @@ const projects = [
     url: "http://www.rituresort.com/",
     imgHeight: "h-[30vh]",
     imgWidth: "w-[100vw]",
-    badgePosition: "top-[35px] left-[20px]",
+    badgePosition: "top-[15px] left-[17px]",
   },
   {
     title: "Seraya - Villa Commune",
@@ -38,7 +38,7 @@ const projects = [
     url: "#",
     imgHeight: "h-[30vh]",
     imgWidth: "w-[100vw]",
-    badgePosition: "top-[35px] right-[40px]",
+    badgePosition: "top-[15px] right-[20px]",
   },
 ];
 export default function ProjectsMobile() {
@@ -68,7 +68,7 @@ export default function ProjectsMobile() {
                   data-aos-duration="1200"
                 >
                   <div className="relative h-full">
-                    <div className="absolute inset-0 translate-x-[-7px] translate-y-[7px] bg-[#c0c0c0] transition-all duration-300 group-hover:translate-x-[-10px] group-hover:translate-y-[10px]" />
+                    {/* <div className="absolute inset-0 translate-x-[-7px] translate-y-[7px] bg-[#c0c0c0] transition-all duration-300 group-hover:translate-x-[-10px] group-hover:translate-y-[10px]" /> */}
 
                     <a
                       href={project.url}
@@ -77,7 +77,7 @@ export default function ProjectsMobile() {
                       className="relative z-10 border border-[rgba(0,0,0,0.04)] h-full block cursor-pointer overflow-hidden"
                     >
                       <span
-                        className={`absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[10px] ${project.badgePosition}`}
+                        className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[10px] ${project.badgePosition}`}
                       >
                         {project.status}
                       </span>
@@ -168,7 +168,7 @@ export default function ProjectsMobile() {
                   data-aos-delay="0"
                   data-aos-duration="1200"
                 >
-                  <div className="absolute inset-0 translate-x-[-7px] translate-y-[7px] bg-[#c0c0c0] transition-all duration-300 group-hover:translate-x-[-10px] group-hover:translate-y-[10px]" />
+                  {/* <div className="absolute inset-0 translate-x-[-7px] translate-y-[7px] bg-[#c0c0c0] transition-all duration-300 group-hover:translate-x-[-10px] group-hover:translate-y-[10px]" /> */}
 
                   <a
                     href={project.url}
@@ -177,7 +177,7 @@ export default function ProjectsMobile() {
                     className="relative z-10 border border-[rgba(0,0,0,0.04)] block cursor-pointer overflow-hidden"
                   >
                     <span
-                      className={`absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[10px] ${project.badgePosition}`}
+                      className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[10px] ${project.badgePosition}`}
                     >
                       {project.status}
                     </span>

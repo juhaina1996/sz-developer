@@ -224,6 +224,7 @@ export default function EnquiryModal({ open, onClose }: Props) {
               value={formData.name}
               onChange={handleInputChange}
               required
+              maxLength={40}
               disabled={isSubmitting}
               className="w-full bg-transparent outline-none text-sm text-black disabled:opacity-50"
             />
