@@ -43,7 +43,7 @@ export default function Navbar() {
           <div className="text-xl font-semibold tracking-wide">
             <a href="/" className="block">
               <Image
-                src="/images/headerLogo.png"
+                src="/headerLogo.svg"
                 alt="Logo"
                 width={72}
                 height={58}
@@ -82,7 +82,7 @@ export default function Navbar() {
           <div className="flex-1 flex flex-col justify-center items-center gap-8">
             {/* Active Link */}
             <a
-              href="#"
+              href="/"
               onClick={handleCloseMenu}
               className={`text-xl font-light text-[#000000] relative ${menuClosing ? 'animate-fadeOutLeft' : 'animate-fadeInLeft'}`}
               style={{ animationDelay: menuClosing ? '0ms' : '400ms' }}
@@ -100,14 +100,13 @@ export default function Navbar() {
               Projects
             </a>
 
-            <a
-              href="#"
+            <button
               onClick={handleContactClick}
               className={`text-xl font-light text-[#000000] ${menuClosing ? 'animate-fadeOutLeft' : 'animate-fadeInLeft'}`}
               style={{ animationDelay: menuClosing ? '0ms' : '600ms' }}
             >
               Contact
-            </a>
+            </button>
           </div>
 
           {/* Bottom Logo Section */}

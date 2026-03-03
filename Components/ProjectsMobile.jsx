@@ -63,9 +63,7 @@ export default function ProjectsMobile() {
                 {/* IMAGE */}
                 <div 
                   className={`${project.imgWidth} flex-shrink-0 group`}
-                  data-aos="fade-right"
-                  data-aos-delay="0"
-                  data-aos-duration="1200"
+                  
                 >
                   <div className="relative h-full">
                     {/* <div className="absolute inset-0 translate-x-[-7px] translate-y-[7px] bg-[#c0c0c0] transition-all duration-300 group-hover:translate-x-[-10px] group-hover:translate-y-[10px]" /> */}
@@ -201,7 +199,7 @@ export default function ProjectsMobile() {
                       className="relative z-10 border border-[rgba(0,0,0,0.04)] block cursor-pointer overflow-hidden"
                     >
                       <span
-                        className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[10px] ${project.badgePosition}`}
+                        className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[4px] ${project.badgePosition}`}
                       >
                         {project.status}
                       </span>
@@ -217,7 +215,7 @@ export default function ProjectsMobile() {
                   ) : (
                     <div className="relative z-10 border border-[rgba(0,0,0,0.04)] overflow-hidden">
                       <span
-                        className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[10px] ${project.badgePosition}`}
+                        className={`status-text absolute z-20 bg-[#F6F6F6] text-[13px] text-[#3F3F3F] px-4 py-1 rounded-[4px] ${project.badgePosition}`}
                       >
                         {project.status}
                       </span>
