@@ -25,7 +25,8 @@
 
 body {
   background: var(--background);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   color: var(--foreground);
   font-family: 'Swis721 LtEx BT', 'Swiss 721 Light Extended', Arial, Helvetica, sans-serif;
 }

@@ -15,24 +15,28 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-[91vh] bg-[#e5e5e5] overflow-hidden">
+    <section className="relative w-full h-[110vh] bg-[#e5e5e5] overflow-hidden">
 
-     <Image
-  src="/images/Hero image.jpg"
-  alt="Hero Background"
-  fill
-  priority
-  className="
-    object-contain 
-    md:object-cover 
-    object-bottom 
-    md:object-center
-    scale-100 md:scale-100
-  "
-/>
+      {/* Desktop Image */}
+      <Image
+        src="/images/Hero image.jpg"
+        alt="Hero Background"
+        fill
+        priority
+        className="hidden md:block object-cover object-center"
+      />
+
+      {/* Mobile Image */}
+      <Image
+        src="/hero mobile.jpeg"
+        alt="Hero Background"
+        fill
+        priority
+        className="block md:hidden object-contain object-bottom"
+      />
 
       <div className="hero-main absolute inset-0 flex items-start">
-        <div className="px-6 md:px-12 pt-[40vh] md:pt-40">
+        <div className="px-6 md:px-12 pt-[52vh] md:pt-40">
           <h1 
             className="tracking-wide text-[18px] md:text-[40px]"
             data-aos="fade-up"

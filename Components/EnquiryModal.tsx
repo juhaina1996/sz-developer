@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 interface Props {
   open: boolean;
@@ -18,6 +19,8 @@ export default function EnquiryModal({ open, onClose }: Props) {
   const [isClosing, setIsClosing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const captchaRef = useRef<HCaptcha>(null);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     phone: '+91',
@@ -27,7 +30,16 @@ export default function EnquiryModal({ open, onClose }: Props) {
 
   // Prevent background scroll
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [open]);
 
   // Reset form when modal opens
@@ -40,6 +52,8 @@ export default function EnquiryModal({ open, onClose }: Props) {
         message: ''
       });
       setSubmitStatus('idle');
+      setCaptchaToken(null);
+      captchaRef.current?.resetCaptcha();
     }
   }, [open]);
 
@@ -122,6 +136,12 @@ export default function EnquiryModal({ open, onClose }: Props) {
       return;
     }
 
+    // hCaptcha validation
+    if (!captchaToken) {
+      alert('Please complete the captcha verification');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -132,6 +152,7 @@ export default function EnquiryModal({ open, onClose }: Props) {
         throw new Error('Google Script URL not configured');
       }
 
+      // Submit to Google Sheets
       const response = await fetch(scriptUrl, {
         method: 'POST',
         mode: 'no-cors', // Required for Google Apps Script
@@ -143,11 +164,36 @@ export default function EnquiryModal({ open, onClose }: Props) {
 
       // Note: With no-cors mode, we can't read the response
       // We assume success if no error is thrown
+
+      // Send confirmation email via Sender.net
+      try {
+        const emailResponse = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+        
+        if (!emailResponse.ok) {
+          const errorData = await emailResponse.json();
+          console.warn('Email sending failed:', errorData);
+          // Continue anyway - don't fail the submission
+        }
+      } catch (emailError) {
+        console.error('Email sending failed:', emailError);
+        // Don't fail the whole submission if email fails
+      }
+
       setSubmitStatus('success');
+      setCaptchaToken(null);
+      captchaRef.current?.resetCaptcha();
 
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
+      setCaptchaToken(null);
+      captchaRef.current?.resetCaptcha();
     } finally {
       setIsSubmitting(false);
     }
@@ -274,10 +320,21 @@ export default function EnquiryModal({ open, onClose }: Props) {
             />
           </div>
 
+          {/* hCaptcha */}
+          <div className={`flex justify-center ${isClosing ? '' : 'animate-fadeInUp'}`} style={{ animationDelay: isClosing ? '0ms' : '525ms' }}>
+            <HCaptcha
+              ref={captchaRef}
+              sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ''}
+              onVerify={(token) => setCaptchaToken(token)}
+              onExpire={() => setCaptchaToken(null)}
+              onError={() => setCaptchaToken(null)}
+            />
+          </div>
+
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !captchaToken}
             className={`w-full bg-[#00CC61] text-white py-3 rounded-md text-base font-medium hover:bg-[#00b355] transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer ${isClosing ? '' : 'animate-fadeInUp'}`}
             style={{ animationDelay: isClosing ? '0ms' : '550ms' }}
           >
