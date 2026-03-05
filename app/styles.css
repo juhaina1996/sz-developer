@@ -138,14 +138,15 @@ main{
   .dna-sub {
     letter-spacing: -0.79px;
     font-size: 16px;
-    font-weight:400;
+    font-weight: 400;
+    font-family: "Swis721 Lt BT", sans-serif;
   }
   .dna-sub-container{
-width:90%;
+width:80%;
   }
   .dna-main {
-    padding-top: 50px;
-    padding-bottom: 301px;
+    padding-top: 40vh;
+  padding-bottom: 40vh;
   }
   .our-projects {
     margin-bottom: 33px;
@@ -157,7 +158,10 @@ width:90%;
     padding: 0 20px;
   }
   .our-projects{
-    font-size: 18px;
+    font-size: 22px;
+  }
+  .horizontal-line-mob {
+    margin: 5px 0;
   }
   .menu-icon{
     width:42px;
@@ -177,5 +181,8 @@ width:90%;
   .status-text{
     font-size: 10px;
     padding: 2px 10px;
+  }
+  .hero-main{
+    justify-content: center;
   }
 }

@@ -16,7 +16,7 @@ const projects = [
     url: "https://www.instagram.com/damview_banasura?igsh=MXdhM2ttbTR2Y3FzdQ==",
     imgHeight: "h-[50vh]",
     imgWidth: "w-[55vw]",
-    badgePosition: "top-[15px] left-[17px]",
+    badgePosition: "top-[15px] left-[12px]",
   },
   {
     title: "Ritu - A Luxury Farm Resort",
@@ -27,7 +27,7 @@ const projects = [
     url: "http://www.rituresort.com/",
     imgHeight: "h-[30vh]",
     imgWidth: "w-[100vw]",
-    badgePosition: "top-[15px] left-[17px]",
+    badgePosition: "top-[15px] left-[12px]",
   },
   {
     title: "Seraya - Villa Commune",
@@ -38,7 +38,7 @@ const projects = [
     url: "",
     imgHeight: "h-[30vh]",
     imgWidth: "w-[100vw]",
-    badgePosition: "top-[15px] right-[20px]",
+    badgePosition: "top-[15px] right-[12px]",
   },
 ];
 export default function ProjectsMobile() {
@@ -110,7 +110,7 @@ export default function ProjectsMobile() {
                 </div>
 
                 {/* RIGHT SIDE — FULL HEIGHT COLUMN */}
-                <div className="flex-1 flex flex-col justify-between">
+                <div className="mt-[12px] flex-1 flex flex-col justify-between">
                   {/* TOP SECTION */}
                   <div>
                     <p 
@@ -124,7 +124,7 @@ export default function ProjectsMobile() {
 
                     <div className="flex items-center h-[6px]">
                       <div 
-                        className="w-[6px] h-[14px] bg-[#00CC61] ml-[-5px] z-100"
+                        className="w-[7px] h-[14px] bg-[#00CC61] ml-[-5px] z-100"
                        
                       />
                       <div 
@@ -236,7 +236,7 @@ export default function ProjectsMobile() {
                   {/* Vertical Line */}
                   <div
   className={`absolute left-[36px] top-[-2px] w-[1px] bg-black ${
-    project.url ? "h-[29px]" : "h-[24px]"
+    project.url ? "h-[32px]" : "h-[26px]"
   }`}
   data-aos="fade-down"
   data-aos-delay="200"
@@ -276,17 +276,17 @@ export default function ProjectsMobile() {
                   </div>
 
                   {/* ===== HORIZONTAL LINE (STARTS AFTER VERTICAL) ===== */}
-                  <div className="relative ml-[42.5px] mt-[3px]">
+                  <div className="relative ml-[36.5px] mt-[3px]">
                     {/* Green block */}
                    <div
-  className={`absolute left-[-12px] w-[14px] h-[4px] bg-[#00CC61] z-[100] ${
-    project.url ? "top-[-31px]" : "top-[-26px]"
+  className={`absolute left-[-7px] w-[14px] h-[6px] bg-[#00CC61] z-[100] ${
+    project.url ? "top-[-34px]" : "top-[-26px]"
   }`}
 />
 
                     {/* Horizontal line */}
                     <div 
-                      className="ml-[-6px] h-[1px] bg-black w-full"
+                      className=" horizontal-line-mob h-[1px] bg-black w-full"
                       data-aos="fade-left"
                       data-aos-delay="600"
                       data-aos-duration="1500"
