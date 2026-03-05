@@ -15,7 +15,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-[110vh] bg-[#e5e5e5] overflow-hidden">
+    <section className="relative w-full h-[90vh] bg-[#e5e5e5] overflow-hidden">
 
       {/* Desktop Image */}
       <Image
@@ -36,7 +36,7 @@ export default function Hero() {
       />
 
       <div className="hero-main absolute inset-0 flex items-start">
-        <div className="px-6 md:px-12 pt-[52vh] md:pt-40">
+        <div className="px-6 md:px-12 pt-[37vh] md:pt-40">
           <h1 
             className="tracking-wide text-[18px] md:text-[40px]"
             data-aos="fade-up"
