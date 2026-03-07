@@ -13,7 +13,7 @@ export default function Home() {
         className="bg-cover bg-center bg-no-repeat"
  style={{
     backgroundImage: "url(/bgMain.svg)",
-    backgroundColor: "#e1e1e1", 
+    backgroundColor: "#e2e2e2", 
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
