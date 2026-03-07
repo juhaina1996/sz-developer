@@ -187,7 +187,10 @@ width:80%;
   }
   .hero-main{
     justify-content: center;
-    background: #e2e2e2;
+   
+  }
+  .hero-main-container{
+ background: #e2e2e2;
   }
   .div-two-projects{
     width:100%;

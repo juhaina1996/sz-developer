@@ -15,7 +15,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-[90vh] bg-[#e5e5e5] overflow-hidden">
+    <section className="hero-main-container relative w-full h-[90vh] bg-[#e5e5e5] overflow-hidden">
 
       {/* Desktop Image */}
       <Image
