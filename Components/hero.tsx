@@ -28,7 +28,7 @@ export default function Hero() {
 
       {/* Mobile Image */}
       <Image
-        src="/hero mobile.jpeg"
+        src="/hero mob.svg"
         alt="Hero Background"
         fill
         priority

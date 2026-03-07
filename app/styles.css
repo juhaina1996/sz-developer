@@ -5,6 +5,9 @@ main{
     background: #e2e2e2;
 
 }
+body{
+  background: #e2e2e2;
+}
 .tracking-wide {
   font-size: 32px;
   font-weight: 100;
@@ -184,5 +187,8 @@ width:80%;
   }
   .hero-main{
     justify-content: center;
+  }
+  .div-two-projects{
+    width:100%;
   }
 }

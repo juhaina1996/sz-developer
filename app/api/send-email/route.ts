@@ -23,65 +23,45 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send email via Sender.net API
-    const response = await fetch('https://api.sender.net/v2/message/send', {
+    // Get template ID (Campaign ID) from environment variable
+    const templateId = process.env.SENDER_TEMPLATE_ID;
+
+    if (!templateId) {
+      console.error('SENDER_TEMPLATE_ID is not configured');
+      return NextResponse.json(
+        { error: 'Email template not configured' },
+        { status: 500 }
+      );
+    }
+
+    // Prepare the payload for Sender.net
+    // Based on Sender.net API docs, custom fields should be at root level
+    const payload = {
+      to: {
+        email: email,
+        name: name,
+      },
+      variables: {
+        firstname: name,
+        lastname: '',
+        email: email,
+        phone: phone || 'Not provided',
+        message: message || 'No message provided',
+      },
+    };
+
+    console.log('Sending email with payload:', JSON.stringify(payload, null, 2));
+
+    // Send email via Sender.net API using template
+    // Endpoint format: https://api.sender.net/v2/message/{CAMPAIGN_ID}/send
+    const response = await fetch(`https://api.sender.net/v2/message/${templateId}/send`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${senderApiKey}`,
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({
-        to: {
-          email: email,
-          name: name,
-        },
-        from: {
-          email: process.env.SENDER_FROM_EMAIL || 'noreply@yourdomain.com',
-          name: process.env.SENDER_FROM_NAME || 'Your Company',
-        },
-        subject: 'Thank you for contacting us!',
-        html: `
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <style>
-                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-                .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-                .header { background-color: #00CC61; color: white; padding: 20px; text-align: center; }
-                .content { background-color: #f9f9f9; padding: 30px; }
-                .footer { text-align: center; padding: 20px; color: #666; font-size: 12px; }
-              </style>
-            </head>
-            <body>
-              <div class="container">
-                <div class="header">
-                  <h1>Thank You for Reaching Out!</h1>
-                </div>
-                <div class="content">
-                  <p>Dear ${name},</p>
-                  <p>Thank you for contacting us. We have received your message and will get back to you shortly.</p>
-                  <p><strong>Your message:</strong></p>
-                  <p style="background-color: white; padding: 15px; border-left: 4px solid #00CC61;">
-                    ${message || 'No message provided'}
-                  </p>
-                  <p><strong>Contact details:</strong></p>
-                  <ul>
-                    <li>Email: ${email}</li>
-                    <li>Phone: ${phone || 'Not provided'}</li>
-                  </ul>
-                  <p>We typically respond within 24-48 hours.</p>
-                  <p>Best regards,<br>Your Team</p>
-                </div>
-                <div class="footer">
-                  <p>This is an automated message. Please do not reply to this email.</p>
-                </div>
-              </div>
-            </body>
-          </html>
-        `,
-        text: `Dear ${name},\n\nThank you for contacting us. We have received your message and will get back to you shortly.\n\nYour message: ${message || 'No message provided'}\n\nContact details:\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nWe typically respond within 24-48 hours.\n\nBest regards,\nYour Team`,
-      }),
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) {
@@ -94,6 +74,7 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json();
+    console.log('Sender.net response:', JSON.stringify(data, null, 2));
     return NextResponse.json({ success: true, data });
 
   } catch (error) {
