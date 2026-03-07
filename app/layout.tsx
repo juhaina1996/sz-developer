@@ -5,9 +5,9 @@ export const metadata = {
   title: "SZ Developers - Real Estate",
   description: "SZ Developers - Premium Real Estate Projects in Wayanad and Calicut",
   icons: {
-    icon: "/sz-favicon.png",
-    shortcut: "/sz-favicon.png",
-    apple: "/sz-favicon.png",
+    icon: "/hero.jpg",
+    shortcut: "/hero.jpg",
+    apple: "/hero.jpg",
   },
   openGraph: {
     title: "SZ Developers - Real Estate",
@@ -17,8 +17,8 @@ export const metadata = {
     images: [
       {
         url: "/hero.jpg",
-        width: 1440,
-        height: 708,
+        width: 1200,
+        height: 630,
         alt: "SZ Developers - Real Estate",
       },
     ],
@@ -43,9 +43,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Favicon */}
-        <link rel="icon" href="/sz-favicon.png" />
-        <link rel="shortcut icon" href="/sz-favicon.png" />
-        <link rel="apple-touch-icon" href="/sz-favicon.png" />
+        <link rel="icon" href="/hero.jpg" />
+        <link rel="shortcut icon" href="/hero.jpg" />
+        <link rel="apple-touch-icon" href="/hero.jpg" />
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.szdevelopers.com/" />
