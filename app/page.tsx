@@ -6,11 +6,11 @@ import Projects from "@/Components/projects";
 
 export default function Home() {
   return (
-    <main>
+    <main className="w-full max-w-full overflow-x-hidden">
       <Navbar />
       <Hero />
       <div 
-        className="bg-cover bg-center bg-no-repeat"
+        className="bg-cover bg-center bg-no-repeat w-full max-w-full"
  style={{
     backgroundImage: "url(/bgMain.svg)",
     backgroundColor: "#e2e2e2", 

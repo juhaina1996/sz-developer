@@ -26,7 +26,7 @@ const projects = [
     status: "Ongoing",
     url: "http://www.rituresort.com/",
     imgHeight: "h-[30vh]",
-    imgWidth: "w-[100vw]",
+    imgWidth: "w-full",
     badgePosition: "top-[15px] left-[12px]",
   },
   {
@@ -37,7 +37,7 @@ const projects = [
     status: "Launching Soon",
     url: "",
     imgHeight: "h-[30vh]",
-    imgWidth: "w-[100vw]",
+    imgWidth: "w-full",
     badgePosition: "top-[15px] right-[12px]",
   },
 ];
