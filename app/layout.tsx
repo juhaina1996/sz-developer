@@ -1,7 +1,5 @@
-import "./globals.css";
-import "./style.css";
-import "./aos-custom.css";
-import "aos/dist/aos.css";
+
+
 import Script from "next/script";
 
 export const metadata = {
