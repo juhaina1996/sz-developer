@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./styles.css";
 
 import Script from "next/script";
 
