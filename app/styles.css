@@ -120,6 +120,15 @@ body{
 .hero-image-mob{
     display: none;
   }
+@media (max-width: 1247px) {
+  .div-one-projects {
+    font-size: 11px;
+  }
+  .div-three-projects {
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 991px) {
   .tracking-wide {
     font-size: 22px;

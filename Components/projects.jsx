@@ -15,9 +15,10 @@ const projects = [
     year: "2024",
     image: "/project1.jpg",
     status: "Completed",
-    url: "https://www.instagram.com/damview_banasura?igsh=MXdhM2ttbTR2Y3FzdQ==",
-    imgHeight: "h-[97vh]",
+    url: "https://damviewglamps.com/",
+    imgHeight: "aspect-[9/16]",
     imgWidth: "w-[388px]",
+    objectPosition: "object-center",
     badgePosition: "top-[35px] right-[27px]",
   },
   {
@@ -27,8 +28,9 @@ const projects = [
     image: "/project 2.png",
     status: "Ongoing",
     url: "http://www.rituresort.com/",
-    imgHeight: "h-[83vh]",
-    imgWidth: "w-[65vw]",
+    imgHeight: "aspect-[16/9]",
+    imgWidth: "w-[60vw]",
+    objectPosition: "object-left",
     badgePosition: "top-[35px] left-[20px]",
   },
   {
@@ -38,8 +40,9 @@ const projects = [
     image: "/project 3.png",
     status: "Launching Soon",
     url: "",
-    imgHeight: "h-[74vh]",
-    imgWidth: "w-[65vw]",
+    imgHeight: "aspect-[16/9]",
+    imgWidth: "w-[60vw]",
+    objectPosition: "object-left",
     badgePosition: "top-[35px] right-[40px]",
   },
 ];
@@ -104,7 +107,7 @@ export default function Projects() {
                           width={0}
                           height={0}
                           sizes="100vw"
-                          className={`w-full ${project.imgHeight} object-contain transition-transform duration-500 group-hover:scale-105`}
+                          className={`${project.imgHeight} ${project.imgWidth} object-contain ${project.objectPosition} transition-transform duration-500 group-hover:scale-105`}
                         />
                       </a>
                     ) : (
@@ -121,7 +124,7 @@ export default function Projects() {
                           width={0}
                           height={0}
                           sizes="100vw"
-                          className={`w-full ${project.imgHeight} object-contain transition-transform duration-500 group-hover:scale-105`}
+                          className={` ${project.imgHeight} ${project.imgWidth} object-contain ${project.objectPosition} transition-transform duration-500 group-hover:scale-105`}
                         />
                       </div>
                     )}
